@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --color-void: #030712;
+  --color-midnight: #081426;
+  --color-atmos: #123c65;
+  --color-ice: #6adcf5;
+  --color-star: #eaf6ff;
+  --color-silver: #93a7c0;
+  --color-violet: #a397ff;
+  --color-amber: #f2b45a;
+  --color-signal: #ff8a7a;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-scan: scan 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  --animate-pulse-soft: pulse-soft 2.8s ease-in-out infinite;
+
+  @keyframes scan {
+    0% { transform: translateY(-10%); opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: translateY(1000%); opacity: 0; }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+}
+
+:root,
+.dark {
+  color-scheme: dark;
+  --background: #030712;
+  --foreground: #eaf6ff;
+  --card: #081426;
+  --card-foreground: #eaf6ff;
+  --popover: #081426;
+  --popover-foreground: #eaf6ff;
+  --primary: #6adcf5;
+  --primary-foreground: #030712;
+  --secondary: #123c65;
+  --secondary-foreground: #eaf6ff;
+  --muted: #0b1a2f;
+  --muted-foreground: #93a7c0;
+  --accent: #10304f;
+  --accent-foreground: #eaf6ff;
+  --destructive: #ff8a7a;
+  --border: rgb(106 220 245 / 0.13);
+  --input: rgb(106 220 245 / 0.2);
+  --ring: #6adcf5;
+  --chart-1: #6adcf5;
+  --chart-2: #a397ff;
+  --chart-3: #eaf6ff;
+  --chart-4: #f2b45a;
+  --chart-5: #93a7c0;
+  --radius: 0.25rem;
+  --sidebar: #050d1b;
+  --sidebar-foreground: #eaf6ff;
+  --sidebar-primary: #6adcf5;
+  --sidebar-primary-foreground: #030712;
+  --sidebar-accent: #0b1a2f;
+  --sidebar-accent-foreground: #eaf6ff;
+  --sidebar-border: rgb(106 220 245 / 0.1);
+  --sidebar-ring: #6adcf5;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: rgb(106 220 245 / 0.3);
+    color: #eaf6ff;
+  }
+}
+
+@utility sci-grid {
+  background-image:
+    linear-gradient(to right, rgb(106 220 245 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(106 220 245 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility label-mono {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
